@@ -6,6 +6,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const VALID_API_KEY = 'Celestial-Apikey';
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'))
+})
+
 const checkApiKey = (req, res, next) => {
   const apiKey = req.headers['authorization'];
   if (!apiKey || apiKey !== `Bearer ${VALID_API_KEY}`) {
